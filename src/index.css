@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-blue: #007BFF;
+    --brand-blue-dark: #0056b3;
+    --brand-green: #00C853;
+    --brand-dark: #222222;
+    --brand-bg: #090d16;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* Custom Geometric Bracket & Arrow Patterns from Brand Kit */
+.bg-bracket-pattern {
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(rgba(0, 123, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 123, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 123, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px, 64px 64px;
+}
+
+.bg-tech-circuit {
+  background-image: radial-gradient(circle at 50% 0%, rgba(0, 123, 255, 0.18), transparent 70%),
+                    radial-gradient(circle at 100% 100%, rgba(0, 200, 83, 0.12), transparent 50%);
+}
+
+.glow-blue {
+  box-shadow: 0 0 35px -5px rgba(0, 123, 255, 0.35);
+}
+
+.glow-green {
+  box-shadow: 0 0 35px -5px rgba(0, 200, 83, 0.3);
+}
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, #007BFF 0%, #00d2ff 60%, #00C853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #38bdf8 0%, #007BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, #4ade80 0%, #00C853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom pulse animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
