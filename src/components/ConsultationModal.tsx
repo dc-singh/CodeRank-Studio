@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, CheckCircle2, Send, ShieldCheck, Zap } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
@@ -19,22 +19,49 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
     company: '',
     website: '',
     service: initialService,
-    budget: '$5,000 - $15,000',
+    budget: '$7,000 - $15,000',
     notes: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  useEffect(() => {
+    setFormData((currentData) => ({ ...currentData, service: initialService }));
+  }, [initialService]);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitError('');
+
+    try {
+      const response = await fetch(e.currentTarget.action, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: new FormData(e.currentTarget),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || 'Form submission failed');
+      }
+
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 700);
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'There was a problem sending your request. Please try again.',
+      );
+    }
   };
 
   const handleReset = () => {
@@ -45,7 +72,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="relative w-full max-w-xl rounded-3xl bg-[#0e1424] border border-slate-700 shadow-2xl overflow-hidden p-6 sm:p-8">
-        
+
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -69,7 +96,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              action="https://formspree.io/f/mdeoqvea"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <input type="hidden" name="_subject" value="New CodeRank Studio consultation request" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-heading font-semibold uppercase tracking-wider text-slate-300 mb-1">
@@ -77,6 +110,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="e.g. Alex Miller"
                     value={formData.name}
@@ -91,6 +125,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <input
                     type="email"
+                    name="_replyto"
                     required
                     placeholder="alex@company.com"
                     value={formData.email}
@@ -107,6 +142,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <input
                     type="text"
+                    name="company"
                     placeholder="e.g. SaaS Flow Inc."
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -120,6 +156,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </label>
                   <input
                     type="text"
+                    name="website"
                     placeholder="https://example.com"
                     value={formData.website}
                     onChange={(e) => setFormData({ ...formData, website: e.target.value })}
@@ -134,6 +171,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     Target Focus
                   </label>
                   <select
+                    name="service"
                     value={formData.service}
                     onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-[#007BFF]"
@@ -150,13 +188,14 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     Estimated Budget Range
                   </label>
                   <select
+                    name="budget"
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-[#007BFF]"
                   >
-                    <option value="$3,000 - $7,000">$3,000 - $7,000 (Sprint Audit & Fast Fixes)</option>
-                    <option value="$7,000 - $15,000">$7,000 - $15,000 (Core Re-architecture)</option>
-                    <option value="$15,000+">$15,000+ (Full Enterprise Scale Engine)</option>
+                    <option value="$3,000 - $7,000">$1,000 - $3,000 (Sprint Audit & Fast Fixes)</option>
+                    <option value="$7,000 - $15,000">$3,000 - $5,000 (Core Re-architecture)</option>
+                    <option value="$15,000+">$7,000+ (Full Enterprise Scale Engine)</option>
                   </select>
                 </div>
               </div>
@@ -166,6 +205,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   System Bottlenecks or Goals (Optional)
                 </label>
                 <textarea
+                  name="notes"
                   rows={3}
                   placeholder="Tell us about your current latency, database loads, or organic ranking goals..."
                   value={formData.notes}
@@ -192,6 +232,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   </>
                 )}
               </button>
+
+              {submitError && (
+                <p role="alert" className="text-xs text-red-300 text-center">
+                  {submitError}
+                </p>
+              )}
 
               <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1">
                 <span className="flex items-center gap-1">

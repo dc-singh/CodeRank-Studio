@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-mono">Email Us</div>
                   <div className="text-xs font-semibold text-white group-hover:text-[#007BFF] transition-colors">
-                    hello@coderank.studio
+                    coderanksolutions@gmail.com
                   </div>
                 </div>
                 <ArrowUpRight className="w-4 h-4 ml-auto text-slate-500 group-hover:text-white transition-colors" />
@@ -133,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-mono">Call / WhatsApp</div>
                   <div className="text-xs font-semibold text-white group-hover:text-[#00C853] transition-colors">
-                    +91 98765 43210
+                    +91 8630855152
                   </div>
                 </div>
                 <ArrowUpRight className="w-4 h-4 ml-auto text-slate-500 group-hover:text-white transition-colors" />
@@ -156,7 +156,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/_coderank.studio?stkn=bDducWZhd3oxdmM1"
                   target="_blank"
                   rel="noreferrer"
                   className="p-2 rounded-lg bg-[#1a1a1a] border border-slate-700 text-slate-300 hover:text-white hover:border-[#00C853] transition-colors"

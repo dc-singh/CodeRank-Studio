@@ -59,11 +59,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
           {/* Quick Contact & Action Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="mailto:hello@coderank.studio"
+              href="mailto:coderanksolutions@gmail.com"
               className="hidden xl:flex items-center gap-1.5 text-xs text-slate-300 hover:text-white bg-slate-900/60 border border-slate-800 px-3 py-1.5 rounded-full transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-[#007BFF]" />
-              <span>hello@coderank.studio</span>
+              <span>coderanksolutions@gmail.com</span>
             </a>
 
             <button
