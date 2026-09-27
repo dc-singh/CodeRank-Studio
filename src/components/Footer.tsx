@@ -25,21 +25,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
       <div className="h-1 w-full bg-gradient-to-r from-[#007BFF] via-[#00d2ff] to-[#00C853]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
-        
+
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
-          
+
           {/* Brand & Mission Column (Col 1-5) */}
           <div className="lg:col-span-5 space-y-5">
             <BrandLogo size="md" showTagline={true} />
-            
+
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
               CodeRank Studio is a specialized tech agency helping digital businesses achieve hyper-growth through high-throughput backend APIs and organic SEO domination.
             </p>
 
             {/* Founder Card info from Brand Kit */}
+
             <div className="p-3.5 rounded-xl bg-[#1a1a1a] border border-slate-700/80 max-w-sm">
-              <div className="text-xs font-semibold text-white">Nakul Dev</div>
+              <div className="text-xs font-semibold text-white">Nakul Kumar</div>
               <div className="text-[11px] text-[#007BFF] font-medium">Founder & Backend Architect</div>
               <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1">
                 <MapPin className="w-3 h-3 text-[#00C853]" />
@@ -47,16 +48,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
               </div>
             </div>
 
-            {/* Brand Colors Swatch Bar */}
-            <div className="flex items-center gap-2 pt-2">
-              <span className="text-[10px] font-mono text-slate-400 uppercase">Brand Colors:</span>
-              <div className="flex items-center gap-1.5">
-                <span className="w-3.5 h-3.5 rounded-full bg-[#007BFF] shadow-sm" title="#007BFF (Blue)"></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-[#00C853] shadow-sm" title="#00C853 (Green)"></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-[#FFFFFF] shadow-sm" title="#FFFFFF (White)"></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-[#222222] border border-slate-600 shadow-sm" title="#222222 (Dark Gray)"></span>
+
+              {/* About Sachin Kumar */}
+            {/* <div className="p-3.5 rounded-xl bg-[#1a1a1a] border border-slate-700/80 max-w-sm">
+              <div className="text-xs font-semibold text-white">Sachin Kumar</div>
+              <div className="text-[11px] text-[#007BFF] font-medium">SEO Expert & Content Strategist</div>
+              <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1">
+                <MapPin className="w-3 h-3 text-[#00C853]" />
+                <span>India | Remote (Global Clients)</span>
               </div>
-            </div>
+            </div> */}
+
           </div>
 
           {/* Services Links (Col 6-8) */}
@@ -103,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             <h4 className="font-heading font-bold text-white text-sm uppercase tracking-wider">
               Direct Contact
             </h4>
-            
+
             <div className="space-y-3">
               {/* Email */}
               <a
