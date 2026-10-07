@@ -19,12 +19,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Services', href: '/services' },
-    { label: 'About', href: '/about' },
-    { label: 'Process', href: '/process' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'Growth Audit', href: '/growth-audit' },
-    { label: 'Testimonials', href: '/testimonials' },
+    { label: 'Services', href: '#services' },
+    { label: 'About', href: '#about' },
+    { label: 'Process', href: '#process' },
+    { label: 'Case Studies', href: '#portfolio' },
+    { label: 'Growth Audit', href: '#audit-estimator' },
+    { label: 'Testimonials', href: '#testimonials' },
   ];
 
   return (
@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center group">
+          <a href="#" className="flex items-center group">
             <BrandLogo size="md" showTagline={false} />
           </a>
 

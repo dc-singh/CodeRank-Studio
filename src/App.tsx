@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutUs } from './components/AboutUs';
@@ -10,23 +10,10 @@ import { Testimonials } from './components/Testimonials';
 import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
-import { AboutPage } from './pages/AboutPage';
-import { CaseStudiesPage } from './pages/CaseStudiesPage';
-import { GrowthAuditPage } from './pages/GrowthAuditPage';
-import { ProcessPage } from './pages/ProcessPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { TestimonialsPage } from './pages/TestimonialsPage';
 
 export function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>('Backend Development & SEO Growth');
-  const [path, setPath] = useState(window.location.pathname);
-
-  useEffect(() => {
-    const handlePopState = () => setPath(window.location.pathname);
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
 
   const handleOpenConsultation = (serviceName?: string) => {
     if (serviceName) {
@@ -42,15 +29,6 @@ export function App() {
     }
   };
 
-  const pageComponent = {
-    '/services': <ServicesPage onOpenConsultation={handleOpenConsultation} />,
-    '/about': <AboutPage onOpenConsultation={handleOpenConsultation} />,
-    '/process': <ProcessPage onOpenConsultation={handleOpenConsultation} />,
-    '/case-studies': <CaseStudiesPage onOpenConsultation={handleOpenConsultation} />,
-    '/growth-audit': <GrowthAuditPage onOpenConsultation={handleOpenConsultation} />,
-    '/testimonials': <TestimonialsPage onOpenConsultation={handleOpenConsultation} />,
-  }[path];
-
   return (
     <div className="min-h-screen bg-[#090d16] text-[#e2e8f0] flex flex-col selection:bg-[#007BFF] selection:text-white">
       {/* Top Navbar */}
@@ -58,23 +36,32 @@ export function App() {
 
       {/* Main Landing Sections */}
       <main className="flex-grow">
-        {pageComponent ? (
-          pageComponent
-        ) : (
-          <>
-            <Hero
-              onGetStarted={() => handleOpenConsultation('New Client Onboarding')}
-              onExploreServices={handleScrollToServices}
-            />
-            <AboutUs />
-            <Services onSelectService={(service) => handleOpenConsultation(service)} />
-            <Process />
-            <Portfolio />
-            <AuditEstimator onBookConsultation={(details) => handleOpenConsultation(details || 'Custom Roadmap')} />
-            <Testimonials />
-            <CtaSection onOpenConsultation={() => handleOpenConsultation('Free Scale Consultation')} />
-          </>
-        )}
+        {/* 1. Hero Section */}
+        <Hero
+          onGetStarted={() => handleOpenConsultation('New Client Onboarding')}
+          onExploreServices={handleScrollToServices}
+        />
+
+        {/* 2. About Us */}
+        <AboutUs />
+
+        {/* 3. Services (3 core cards: Backend, SEO, Branding) */}
+        <Services onSelectService={(service) => handleOpenConsultation(service)} />
+
+        {/* 5-Step Process (from Brand kit presentation template) */}
+        <Process />
+
+        {/* 4. Portfolio / Case Studies */}
+        <Portfolio />
+
+        {/* Interactive Growth & Latency Simulator */}
+        <AuditEstimator onBookConsultation={(details) => handleOpenConsultation(details || 'Custom Roadmap')} />
+
+        {/* 5. Testimonials Slider */}
+        <Testimonials />
+
+        {/* 6. Call to Action Section */}
+        <CtaSection onOpenConsultation={() => handleOpenConsultation('Free Scale Consultation')} />
       </main>
 
       {/* 7. Footer */}
