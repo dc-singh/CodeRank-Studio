@@ -68,31 +68,31 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <a href="#services" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/services" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#007BFF] font-mono">&lt;/&gt;</span>
                   <span>FastAPI & Python Backends</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/services" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#007BFF] font-mono">&lt;/&gt;</span>
                   <span>SQLAlchemy & Postgres Scale</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/services" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#00C853] font-mono">&#8593;</span>
                   <span>Technical & Core Web Vitals SEO</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/services" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#00C853] font-mono">&#8593;</span>
                   <span>Programmatic SEO Pipelines</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/services" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-white font-mono">•</span>
                   <span>Developer Branding & UI Guidance</span>
                 </a>
