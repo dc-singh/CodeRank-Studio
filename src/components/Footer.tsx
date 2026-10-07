@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenConsultation }) => {
             </div>
 
 
-              {/* About Sachin Kumar */}
+            {/* About Sachin Kumar */}
             {/* <div className="p-3.5 rounded-xl bg-[#1a1a1a] border border-slate-700/80 max-w-sm">
               <div className="text-xs font-semibold text-white">Sachin Kumar</div>
               <div className="text-[11px] text-[#007BFF] font-medium">SEO Expert & Content Strategist</div>
