@@ -1,0 +1,9 @@
+fastapi[standard]
+uvicorn[standard]
+pydantic-settings
+sqlalchemy
+psycopg[binary]
+alembic
+email-validator
+pytest
+httpx
